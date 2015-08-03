@@ -1,0 +1,577 @@
+* {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-overflow-scrolling: touch;
+    font-family:'Ubuntu','HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+}
+
+
+input,
+textarea {
+	-webkit-touch-callout: auto;
+	-webkit-user-select: auto;
+}
+
+body {
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px;
+    /*height:100%;*/
+    /*width: 100%;*/
+
+    font-size:1em;
+    background-color:#d9d8c3;
+}
+
+
+.centerAlign {
+    text-align: center;
+}
+
+.padded {
+    padding:1em;
+}
+
+.paragraph {
+    margin:0px;
+    margin-bottom:1em;
+    border-top:1px solid #878564;
+    padding-top:1em;
+    line-height: 1.2;
+}
+
+.paragraph_noborder {
+    margin:0px;
+    margin-bottom:1em;
+    border: none;
+    padding-top:1em;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+.subtext {
+    font-size:0.85em;
+}
+
+
+/*ViewNavigator Styles*/
+/*-----------------------*/
+
+.viewNavigator_header {
+/*    background-color: #734555 !important;*/
+    background-color: #b3375b !important;
+    z-index: 999;
+}
+
+.viewNavigator_header_title {
+    color:#fff;
+    font-size:1.2em;
+    padding-top: 1.5px;
+    max-width:65%;
+}
+
+.viewNavigator_backButton {
+    position:absolute;
+    top:4px;
+    left:10px;
+    width:40px;
+    height:35px;
+
+    padding:0px;
+    background-image:url('../assets/graphics/backButton.png');
+    background-position: 13px center;
+    background-repeat:no-repeat;
+    background-size: auto 15px;
+
+    border:1.5px solid #363228;
+    background-color: #aaa660;
+    border-radius: 10px;
+}
+
+.viewNavigator_backButton:active {
+    background-color: #d9cf67;
+}
+
+.viewNavigator_content {
+/*    border-top:0px solid #999;*/
+    background: #d9d8c3;
+    color:#444;
+    /*    min-height:100%;*/
+}
+
+.viewNavigator_contentHolder {
+    color:#444;
+    background:#767566;
+/*    border-left:0px solid #999;
+    border-right:0px solid #999;*/
+    /*    min-height:100%;*/
+}
+
+.viewNavigator_contentHolder > div:first-child {
+    min-height:100%;
+    background: #d9d8c3;
+/*    border-bottom:1px solid #444;
+    border-top:1px solid #444;*/
+}
+
+#preloadBackButton {
+    background-image:url('../assets/graphics/backButton.png');
+}
+
+
+/*ArtListNearby*/
+/*-----------------------*/
+
+
+
+.data-list {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+	position:relative;
+	background-color: #d9d8c3;
+	min-height:100%;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+
+    backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.data-list ul,
+.data-list li {
+	padding:0;
+	margin:0;
+	border:none;
+}
+
+
+.data-list ul {
+	display:block;
+	width:100%;
+	max-width:100%;
+}
+
+
+.data-list li {
+/*    cursor:pointer;*/
+    font-size:1em;
+	padding:12px;
+	padding-left:0em;
+	padding-right:1px;
+	display:block;
+	border-top:1px solid #b8b7a2;
+	border-bottom:1px solid #b8b7a2;
+
+    background-image:url('../assets/graphics/more_disclosure.png');
+    background-position:right center;
+    background-repeat:no-repeat;
+    height: 90px;
+}
+
+.data-list img {
+	height:80px;
+	width: auto;
+	max-width: 100px;
+	margin-top:5px;
+}
+
+
+/*.listSelected {
+	border-top:1px solid #999422;
+	background-color: #d8d981;
+}*/
+
+.artListFrame {
+    float: left;
+    height:90px;
+    width: 110px;
+    margin-left:20px;
+    background-color:#FFFFFF;
+    border: 1px solid black; 
+    text-align:center;    
+}
+
+.artListTextBlock {
+    margin-left:140px;
+    margin-right: 5px;
+}
+
+/*.artListDisciplineMarker {
+    width:10px;
+    height:100px;
+    float: left;
+}*/
+
+.heading {
+    background-color: #fff;
+    color:#444;
+    border-bottom:1px solid #b8b7a2;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform:translate3d(0,0,0);
+}
+
+/*About*/
+/*-----------------------*/
+
+#aboutView {
+    padding:1em;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+.listNoBullets {
+    list-style-type: none;
+}
+
+/*#aboutView div {
+    display:block;
+*//*    padding:1em;*//*
+    padding-top:0em;
+}*/
+
+
+/*MAP*/
+/*-----------------------*/
+
+#artMapView {
+    width:100%;
+    height:100%;
+    position:absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+#artMarker p  {
+    margin: 0;
+    text-align: center;
+    font: small Ubuntu,  Helvetica Neue, Helvetica, arial;
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+#artMarker img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#artMarker {
+    min-width: 150px;
+    min-height: 150px;
+    max-height: 250px;
+    max-width: 180px;
+    padding: 10px;
+    background-color: rgb(57,57,57);
+    border-radius: 5px;
+}
+
+
+#placesMarker {
+    min-width: 100px;
+    max-width: 300px;
+    max-height: 600px;
+    min-height: 50px;
+    background-color: rgb(57,57,57);
+    border-radius: 5px;
+}
+
+#placesMarker p {
+    text-align: center;
+    font: small Ubuntu,  Helvetica Neue, Helvetica, arial;
+    color: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.infoBubble {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+#map {
+    width:100%;
+    height:100%;
+}
+
+#map img {
+    max-width: none;
+    max-height: none;
+}
+
+.mapWrapper {
+    top: 55px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.loadingMsgBox {
+    z-index:9999;
+    /*color:#444;*/
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left:-70px;
+    margin-top:-50px;
+}
+
+.mapNavButtonBlock {
+    text-align: center;
+    /*    background-color: #46453a;*/
+    /*    background-color: #493922;*/
+    background-color: #493922;
+    height:55px;
+}
+
+
+/*Art and Place Detail View*/
+/*-----------------------*/
+
+#artDetailView,
+#placeDetailView {
+    padding:1.5em;
+    padding-top:15px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+.detailArtTitleText,
+.detailPlaceNameText {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.detailArtistText {
+    font-style: italic;
+    padding-top: 5px;
+}
+
+.artDetailImage img {
+    width:225px;
+    height:auto;
+    box-shadow:5px 5px 5px #0d1632;
+}
+
+.artDetailImage {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+}
+
+.artDetailTextBlock {
+    padding-bottom: 10px;
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+/*#artDetailDisciplineBanner {
+    top:45px;
+    left:0px;
+    position:absolute;
+    width:100%;
+    height:125px;
+    z-index:-1;
+}*/
+
+
+#placeDetailMap,
+#artDetailMap {
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    height: 200px;
+    border:2px solid #878564;
+}
+
+.placeDetailImage {
+    float: left;
+}
+
+.placeDetailImage img {
+    width:30px;
+    height:auto;
+    padding-bottom: 5px;
+    padding-top: 0px;
+}
+
+.placeDetailTextBlock {
+    margin-left:40px;
+    padding-bottom: 15px;
+}
+
+.placeDetailButtonBlock,
+.artDetailButtonBlock {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    white-space:nowrap;
+}
+
+
+
+/*Gallery View*/
+/*-----------------------*/
+
+
+#galleryView {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+#galleryWrapper {
+    padding-top:.5em;
+    text-align: center;
+    padding-bottom:.5em;
+}
+
+#galleryThumbnail {
+/*    float:left;*/
+    height:110px;
+    width:auto;
+    max-width: 145px; 
+/*    clear:both;*/
+}
+
+.image-frame {  
+    height:110px;
+    width: 145px;
+    padding: 5px;
+    margin:5px;
+    background-color:#FFFFFF;
+    border: 1px solid black; 
+    display: inline-block;
+}
+
+.galleryButtonBlock,
+.moreImagesButtonBlock {
+    text-align: center;
+    padding:1.1em;
+/*    background-color: #493922;*/
+    background-color: #493922;
+    clear:both;
+}
+
+
+/*Buttons*/
+/*-----------------------*/
+
+.detailButton,
+.detailButtonNav {
+    border:1.5px solid #191513;
+    /*background-color: #aaa660;*/
+    background-color: #aaa660;
+    border-radius: 10px;
+    color: white;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.detailButton {
+    padding:.85em;
+    margin-right: 3px;
+    margin-left: 3px;
+    font-size: .85em;
+}
+
+
+.detailButtonNav {
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 25px;
+    padding-bottom: 6px;
+    margin-right: 1px;
+    margin-left: 1px;
+    position: relative;
+    top:25px;
+    background-repeat:no-repeat;
+    background-position:top;
+    background-size: auto 23px;
+/*    box-shadow:2px 2px 2px #1c1814;*/
+}
+
+.galleryIcon {
+    background-image:url('../assets/graphics/gallery9.png');
+}
+
+.favIcon {
+    background-image:url('../assets/graphics/star.png');
+}
+
+.nearbyIcon {
+    background-image:url('../assets/graphics/nearby.png');
+}
+
+.aboutIcon {
+    background-image:url('../assets/graphics/info.png');
+}
+
+.detailButton:active,
+.detailButtonNav:active {
+    background-color: #d9cf67;
+}
+
+.detailButton:visited,
+.detailButton:hover,
+.detailButton:active,
+.detailButtonNav:active,
+.detailButtonNav:hover,
+.detailButtonNav:visited
+{
+    color: white;
+    text-decoration:none;
+}
+
+.smallText {
+   font-size: .70em;
+}
+
+.largeText {
+    font-size: 1em;
+    padding:2em;
+}
+
+.lightBorder {
+    border:1px solid #363228;
+}

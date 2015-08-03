@@ -1,0 +1,25 @@
+<div id="artListView" class="data-list">
+    <div class="padded heading">
+        50 Public Art pieces closest to you:
+    </div>
+
+        <ul>
+            {{#artList}}
+            <li index="{{recordId}}">
+<!--                <div class="artListDisciplineMarker" style="background-color:{{disciplineColor}}"></div>-->
+
+                <div index="{{recordId}}" class="artListFrame"><img src="{{image}}"/></div>
+
+                <div index="{{recordId}}" class="artListTextBlock"><strong>{{title}}</strong><br/>
+
+                    <div class="subtext"><em>{{artist}}</em><br/></div>
+
+                    {{#distance}}
+                    <div class=subtext>{{distance}} miles</div>
+                    {{/distance}}
+
+                </div>
+            </li>
+            {{/artList}}
+        </ul>
+</div>

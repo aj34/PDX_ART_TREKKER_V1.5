@@ -1,0 +1,65 @@
+<div id="placeDetailView">
+    <div>
+        <div class="placeDetailImage"><img src="{{placeMarkerIcon}}"/></div>
+
+        <div class="placeDetailTextBlock">
+            {{#name}}
+            <div class="detailPlaceNameText">{{name}}</div>
+            {{/name}}
+
+            {{#vicinity}}
+            <div>{{vicinity}}</div>
+            {{/vicinity}}
+
+            {{#formatted_phone_number}}
+            <div>{{formatted_phone_number}}</div>
+            {{/formatted_phone_number}}
+
+            {{^formatted_phone_number}}
+            <br/>
+            {{/formatted_phone_number}}
+        </div>
+
+
+        <div class="paragraph">
+
+            <div class="placeDetailButtonBlock">
+                {{#website}}
+                <a id="websiteURL" class="detailButton lightBorder" href="javascript:openExternalURL('{{website}}')">Website</a>
+                {{/website}}
+
+                {{#url}}
+                <a id="plusPageURL" class="detailButton lightBorder" href="javascript:openExternalURL('{{url}}')">Google Plus Page</a>
+                {{/url}}
+            </div>
+        </div>
+    </div>
+
+    <div id="placeDetailMap"></div>
+
+    <br/>
+
+    <div class="paragraph">
+
+        <div class="subtext">
+
+            {{#rating}}
+            <strong>Rating: </strong>{{rating}}<br/><br/>
+            {{/rating}}
+
+            <div id="reviewsHeading"><strong>Recent Reviews: </strong><br/><br/>
+
+                <ul>{{#reviews}}
+                    <li><strong>{{author_name}}</strong><br/>"{{text}}"</li><br/>
+                    {{/reviews}}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

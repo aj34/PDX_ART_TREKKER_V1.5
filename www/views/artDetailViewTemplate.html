@@ -1,0 +1,91 @@
+<div id="artDetailView" xmlns="http://www.w3.org/1999/html">
+
+    <div>
+<!--
+        <div id="artDetailDisciplineBanner" style="background-color:{{disciplineColor}}"></div>
+-->
+        {{#image_url}}
+        <div class="artDetailImage"><img src="{{image_url}}" class="img-polaroid" /></div>
+        {{/image_url}}
+
+
+        <div class="artDetailTextBlock">
+            {{#title}}
+            <div class="detailArtTitleText">{{title}}</div>
+            {{/title}}
+
+            {{#artist}}
+            <div class="detailArtistText">{{artist}}</div>
+            {{/artist}}
+        </div>
+
+        <div class="paragraph">
+            {{#medium}}
+            <strong>Medium: </strong>{{medium}}<br/>
+            {{/medium}}
+
+            {{#discipline}}
+            <strong>Discipline: </strong>{{discipline}}<br/>
+            {{/discipline}}
+
+            {{#dimensions}}
+            <strong>Dimensions: </strong>{{dimensions}}<br/>
+            {{/dimensions}}
+
+            {{#date}}
+            <strong>Date: </strong>{{date}}<br/>
+            {{/date}}
+
+            {{#funding_source}}
+            <strong>Funding Source: </strong>{{funding_source}}
+            {{/funding_source}}
+
+            <div class="artDetailButtonBlock">
+                <br/>
+                <a id="addToFav" class="detailButton lightBorder" href="javascript:addToFav(true, '{{record_id}}')">Add to Favs</a>
+                <a id="removeFromFav" class="detailButton lightBorder" href="javascript:addToFav(false, '{{record_id}}')">Remove From Favs</a>
+                <br/>
+            </div>
+
+        </div>
+
+        {{#description}}
+        <div class="paragraph">
+            <strong>Description: </strong><br/><br/>
+            {{description}}
+        </div>
+        {{/description}}
+
+
+        <div class="paragraph">
+            <strong>Location:</strong><br/><br/>
+            {{#location}}
+            <div id="location">{{location}}<br/></div>
+            {{/location}}
+
+            {{#street}}
+            {{street}}<br/>
+            {{/street}}
+
+            {{#city}}
+            {{city}},
+            {{/city}}
+
+            {{#state}}
+            {{state}},
+            {{/state}}
+
+            {{#zipcode}}
+            {{zipcode}}
+            {{/zipcode}}
+        </div>
+
+    </div>
+    <div id="artDetailMap"></div>
+    <br/>
+    <br/>
+
+
+</div>
+
+
