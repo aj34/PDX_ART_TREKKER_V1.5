@@ -16,8 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-Parse.initialize("key", "key");
-ArtObject = Parse.Object.extend("art");
+
+// Initialize Firebase
+var config = {
+  apiKey: **,
+  authDomain: **,
+  databaseURL: **,
+  storageBucket: **,
+  messagingSenderId: **
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 var artItems = [];
 var googlePlaceResults = [];
@@ -59,7 +69,7 @@ var app = {
 
         document.addEventListener("backbutton", onBackKey, false);
 
-        console.log('Received Event: ' + id);
+//        console.log('Received Event: ' + id);
     }
 };
 
@@ -78,14 +88,15 @@ app.initialize();
 
 })(window);
 
-function getArtItems (skipNum) {
-    var query = new Parse.Query(ArtObject);
-    query.limit(100);
-    query.skip(skipNum);
-
-    query.find({
-        success:function(results) { onParseSuccess(results); },
-        error: function(error) { onParseError(error); }
+function getArtItems() {
+    firebase.database().ref().once('value')
+    .then(function(snapshot) {
+      var artData = snapshot.val();
+      onFirebaseSuccess(artData);
+    })
+    .catch(function(error) {
+//      console.log('Firebase Synchronization failed');
+      onFirebaseError(error);
     });
 }
 
@@ -135,7 +146,7 @@ function setupDefaultView() {
 }
 
 
-function onParseSuccess(results) {
+function onFirebaseSuccess(results) {
     for (var i = 0; i < results.length; i++) {
         artItems.push(results[i]);
     }
@@ -145,13 +156,13 @@ function onParseSuccess(results) {
         preloadImages(results);
     }
 
-    if (results.length == 100){
-        ++queryRequestCount;
-        getArtItems(100 * queryRequestCount);
-    } else {
-        removeLoadingMsg();
-        getGooglePlaces();
-    }
+    removeLoadingMsg();
+    getGooglePlaces();
+}
+
+function onFirebaseError(error) {
+    alert("We encountered an error when retrieving the data: " + error.code + " " + error.message);
+    removeLoadingMsg();
 }
 
 function getGooglePlaces() {
@@ -180,11 +191,6 @@ function callback(results, status, pagination) {
     getMyLocation();
 }
 
-function onParseError(error) {
-    alert("We encountered an error when retrieving the data: " + error.code + " " + error.message);
-    removeLoadingMsg();
-}
-
 function removeLoadingMsg() {
     // wait about 2 more seconds before removing this msg
     setTimeout( function () {
@@ -201,7 +207,7 @@ function preloadImages(items) {
     for (var i = 0; i < items.length; i++) {
         var art = items[i];
         var img = new Image();
-        img.src = art.attributes.image_url;
+        img.src = art.image_url;
         preloadImages.list.push(img);
     }
 }
@@ -372,7 +378,7 @@ function placeDetailCallback(placeDetailResult, status) {
 function getArtItemFromRecordId(recordId) {
     for (var i=0; i < artItems.length; i++ ) {
         var art = artItems[i];
-        if (art.attributes.record_id == recordId) {
+        if (art.record_id == recordId) {
             return art;
         }
     }
@@ -386,7 +392,7 @@ function showArtDetailsFromMapClick(recordId) {
     var art;
     for (var i=0; i < artItems.length; i++ ) {
         art = artItems[i];
-        if (art.attributes.record_id == recordId) {
+        if (art.record_id == recordId) {
             foundArt=true;
             break;
         }
@@ -453,9 +459,9 @@ function createArtMarkers(items) {
     for (var i = 0; i < items.length; i++) {
         var art = items[i];
 
-        var geo = new google.maps.LatLng(art.attributes.lat, art.attributes.lng);
+        var geo = new google.maps.LatLng(art.lat, art.lng);
 
-        var mapIcon = "assets/graphics/map_icons/" + getDisciplineColor(art.attributes.discipline) + ".png";
+        var mapIcon = "assets/graphics/map_icons/" + getDisciplineColor(art.discipline) + ".png";
 
         var marker = new google.maps.Marker({
             map:map,
@@ -468,8 +474,8 @@ function createArtMarkers(items) {
 
             // Attaching a click event to the current marker
             google.maps.event.addListener(marker, "click", function () {
-                var img = "<a href='javascript:showArtDetailsFromMapClick(" + art.attributes.record_id + ");'>" +
-                  "<div id='artMarker'><img class='img-polaroid' src=" + art.attributes.image_url + " width='144'/><p>" + art.attributes.title + "</p></div></a>";
+                var img = "<a href='javascript:showArtDetailsFromMapClick(" + art.record_id + ");'>" +
+                  "<div id='artMarker'><img class='img-polaroid' src=" + art.image_url + " width='144'/><p>" + art.title + "</p></div></a>";
                 infoBubble.setContent(img);
                 infoBubble.open(map, marker);
             });

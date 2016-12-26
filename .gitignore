@@ -1,12 +1,13 @@
 
-.idea/misc.xml
-
-.idea/modules.xml
-
-.idea/PDX_ART_TREKKER.iml
-
-.idea/vcs.xml
-
-.idea/workspace.xml
+.idea/**
 
 keys.txt
+
+platforms/**
+plugins/**
+
+platforms/android/.gradle/2.2.1/taskArtifacts/cache.properties.lock
+
+PDXArtTrekkerKS
+
+

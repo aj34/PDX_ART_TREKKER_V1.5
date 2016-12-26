@@ -192,8 +192,8 @@ ViewAssembler.prototype.galleryView = function(startIndex, endIndex, items, show
     var markupString = '';
     for (var i=parseInt(startIndex); i< parseInt(endIndex); i++) {
         var art = items[i];
-        markupString += "<div class='image-frame'><a href='javascript:showArtDetailsFromMapClick(" + art.attributes.record_id +");'>" +
-                        "<img id='galleryThumbnail' src='" + art.attributes.image_url +"'/></a></div>"
+        markupString += "<div class='image-frame'><a href='javascript:showArtDetailsFromMapClick(" + art.record_id +");'>" +
+                        "<img id='galleryThumbnail' src='" + art.image_url +"'/></a></div>"
     }
 
     el.find("#galleryWrapper").append(markupString);
@@ -214,8 +214,8 @@ ViewAssembler.prototype.artListView = function() {
         var art = artItems[i];
         var artListInfo = [];
 
-        var lat1 = parseFloat(art.attributes.lat);
-        var lon1 = parseFloat(art.attributes.lng);
+        var lat1 = parseFloat(art.lat);
+        var lon1 = parseFloat(art.lng);
         var lat2 = parseFloat(currentLat);
         var lon2 = parseFloat(currentLng);
 
@@ -224,11 +224,11 @@ ViewAssembler.prototype.artListView = function() {
         } else {
             artListInfo.distance = Math.round(distance(lat1, lon1, lat2, lon2) * 1000)/1000;
         }
-        artListInfo.title = art.attributes.title;
-        artListInfo.artist = art.attributes.artist;
-        artListInfo.image = art.attributes.image_url;
+        artListInfo.title = art.title;
+        artListInfo.artist = art.artist;
+        artListInfo.image = art.image_url;
 //        artListInfo.disciplineColor = getDisciplineColor(art.attributes.discipline);
-        artListInfo.recordId = art.attributes.record_id;
+        artListInfo.recordId = art.record_id;
         result.push(artListInfo);
     }
 
@@ -262,9 +262,9 @@ ViewAssembler.prototype.artDetailView = function(art) {
     art.attributes.disciplineColor = getDisciplineColor(art.attributes.discipline);
 */
 
-    var el = $( Mustache.to_html(template, art.attributes));
+    var el = $( Mustache.to_html(template, art));
 
-    if (art.attributes.street == art.attributes.location){
+    if (art.street == art.location){
         el.find( "#location").css( "display","none");
     }
 
@@ -282,7 +282,7 @@ ViewAssembler.prototype.artDetailView = function(art) {
 
 
     setTimeout( function(){
-        var geo = new google.maps.LatLng(art.attributes.lat, art.attributes.lng);
+        var geo = new google.maps.LatLng(art.lat, art.lng);
 
         var mapOptions = {
             center:geo,
@@ -295,7 +295,7 @@ ViewAssembler.prototype.artDetailView = function(art) {
         var detailMapElement = el.get(0).children[1];
         var artDetailMap = new google.maps.Map(detailMapElement, mapOptions);
 
-        var mapIcon = "assets/graphics/map_icons/" + getDisciplineColor(art.attributes.discipline) + ".png";
+        var mapIcon = "assets/graphics/map_icons/" + getDisciplineColor(art.discipline) + ".png";
 
         var artMarker = new google.maps.Marker({
             map:artDetailMap,
